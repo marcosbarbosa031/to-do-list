@@ -1,0 +1,47 @@
+.to-do-list {
+  float: left;
+  width: calc(40% - 20px);
+  padding-right: 20px;
+
+  &__header {
+    display: flex;
+    height: 30px;
+  }
+
+  &__title {
+    float: left;
+    margin: auto 0;
+    font-size: 20px;
+  }
+
+  &__add-btn {
+    float: right;
+    margin: 0 0 0 auto;
+    width: 26px;
+    height: 26px;
+    font-size: 26px;
+    text-align: center;
+    background-color: #cde8ff;
+    border-top: 1px solid #426a8c;
+    border-left: 1px solid #426a8c;
+    box-shadow: 1px 1px 0px 1px #426a8c;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  &__add-btn:hover {
+    border-bottom: 1px solid #426a8c;
+    border-right: 1px solid #426a8c;
+    box-shadow: inset 0.5px 0.5px 0px 0.5px #426a8c;
+  }
+  
+  &__add-btn:active {
+    color: #cde8ff;
+    background-color: #86b5de;
+    border-top: none;
+    border-left: none;
+    border-bottom: 1px solid #86b5de;
+    border-right: 1px solid #86b5de;
+    box-shadow: inset 0.5px 0.5px 0px 0.5px #86b5de;
+  }
+}
