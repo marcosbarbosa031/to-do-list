@@ -65,7 +65,7 @@
       color: #426a8c;
       font-family: 'Fira Code';
       background-color: #cde8ff;
-      width: 90%;
+      width: 80%;
 
       &::placeholder {
         color: #72a1ca;
@@ -74,7 +74,11 @@
       &--done {
         font-weight: 600;
       }
+    }
 
+    &__counter {
+      margin: auto;
+      color: #72a1ca;
     }
   }
 }

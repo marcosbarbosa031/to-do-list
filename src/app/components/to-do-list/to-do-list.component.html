@@ -38,6 +38,10 @@
         {{ list.placeholder }}
       </div>
 
+      <div class="to-do-list__card__counter">
+        {{ list.todos.length ? list.todos : '' }}
+      </div>
+
       <div
       class="to-do-list__btn"
       (click)="removeList(list.id)"
