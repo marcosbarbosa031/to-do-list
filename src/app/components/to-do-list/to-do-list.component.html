@@ -15,7 +15,7 @@
         class="to-do-list__card__title"
         type="text"
         [(ngModel)]="list.title"
-        [placeholder]="list.description"
+        [placeholder]="list.placeholder"
         (blur)="disableInput($event.target)"
         (keypress)="endEdit($event)"
       />
@@ -35,12 +35,12 @@
         (dblclick)="enableInput($event.target)"
         hidden
       >
-        {{ list.description }}
+        {{ list.placeholder }}
       </div>
 
       <div
       class="to-do-list__btn"
-      (click)="removeList()"
+      (click)="removeList(list.id)"
       >-</div>
     </div>
   </div>

@@ -16,16 +16,20 @@ export class ToDoListComponent implements OnInit {
   }
 
   async addList(element: HTMLElement) {
+    const id = this.toDoList.length + 1;
     const list: ToDoListType = {
-      id: this.toDoList.length + 1,
+      id,
       title: '',
-      description: 'Nova lista...',
+      placeholder: 'Nova lista...',
       todos: []
     };
 
+    console.log(list);
+
     this.toDoList.push(list);
     await this.sleep(100);
-    const titleInput = element.parentElement.parentElement.children[1].children[0].children[0] as HTMLElement;
+    const titleInput = element.parentElement.parentElement.children[1].children[id - 1].children[0] as HTMLElement;
+    console.log(titleInput);
     titleInput.focus();
   }
 
@@ -34,7 +38,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   disableInput(element: HTMLElement) {
-    console.log(element);
     const hiddenTitle = element.parentElement.children[1];
     element.setAttribute('disabled', 'true');
     element.setAttribute('hidden', 'true');
@@ -60,7 +63,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   removeList(id: number) {
-    this.toDoList.splice(id - 1, 1);
+    this.toDoList = this.toDoList.filter(list => list.id !== id);
   }
 
 }
