@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToDoListType } from './to-do-list.types';
 
 @Component({
   selector: 'app-to-do-list',
@@ -6,11 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./to-do-list.component.scss']
 })
 export class ToDoListComponent implements OnInit {
-  title = 'List of To Do';
+  title = 'Lists';
+  toDoList: ToDoListType[] = [];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addList() {
+    const list: ToDoListType = {
+      id: this.toDoList.length + 1,
+      title: '',
+      description: '',
+      todos: []
+    };
+
+    this.toDoList.push(list);
+  }
+
+  removeList(id: number) {
+    this.toDoList.splice(id - 1, 1);
   }
 
 }

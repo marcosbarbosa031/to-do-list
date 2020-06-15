@@ -13,19 +13,23 @@
   margin: auto;
 
   &__title {
-    font-size: 50px;
+    font-size: 42px;
     font-weight: 600;
     padding: 12px 0px;
     text-align: center;
     margin-bottom: 32px;
     background-color: #cde8ff;
-    box-shadow: 7px 7px 0px 1px #426a8c;
+    border-top: 2px solid #426a8c;
+    border-left: 2px solid #426a8c;
+    box-shadow: 4px 4px 0px 4px #426a8c;
   }
 
   &__card {
     height: 600px;
     padding: 20px;
     background-color: #cde8ff;
-    box-shadow: 7px 7px 0px 1px #426a8c;
+    border-top: 2px solid #426a8c;
+    border-left: 2px solid #426a8c;
+    box-shadow: 4px 4px 0px 4px #426a8c;
   }
 }

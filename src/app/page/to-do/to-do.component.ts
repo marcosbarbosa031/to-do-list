@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./to-do.component.scss']
 })
 export class ToDoComponent implements OnInit {
-  title = 'To do App';
+  title = 'DoTasks';
 
   constructor() { }
 
