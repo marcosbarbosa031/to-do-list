@@ -3,10 +3,10 @@
     <div class="to-do-page-content__title">
       {{ title }}
     </div>
-  
+
     <div class="to-do-page-content__card">
-      <app-to-do-list></app-to-do-list>
-      <app-to-do-details></app-to-do-details>
+      <app-to-do-list [toDoList]="toDoList" (toDoListChange)="updateToDoList($event)"></app-to-do-list>
+      <app-to-do-details [toDoList]="toDoList"></app-to-do-details>
     </div>
   </div>
 </div>

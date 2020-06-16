@@ -1,3 +1,7 @@
-<div class="to-do-details">
+<div
+  class="to-do-details"
+  *ngIf="toDoList.length"
+>
   to-do-details works!
+  {{toDoList.length}}
 </div>

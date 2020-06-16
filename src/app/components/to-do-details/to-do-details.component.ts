@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ToDoListType } from '../to-do-list/to-do-list.types';
 
 @Component({
   selector: 'app-to-do-details',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToDoDetailsComponent implements OnInit {
   title = 'List of To Do';
+  @Input() toDoList: ToDoListType[];
 
   constructor() { }
 

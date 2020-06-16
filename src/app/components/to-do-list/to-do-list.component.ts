@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ToDoListType } from './to-do-list.types';
 
 @Component({
@@ -8,7 +8,8 @@ import { ToDoListType } from './to-do-list.types';
 })
 export class ToDoListComponent implements OnInit {
   title = 'Lists';
-  toDoList: ToDoListType[] = [];
+  @Input() toDoList: ToDoListType[];
+  @Output() toDoListChange = new EventEmitter<ToDoListType[]>();
 
   constructor() { }
 
@@ -25,13 +26,11 @@ export class ToDoListComponent implements OnInit {
     };
 
     this.toDoList.push(list);
+    this.toDoListChange.emit(this.toDoList);
+
     await this.sleep(100);
     const titleInput = element.parentElement.parentElement.children[1].children[id - 1].children[0] as HTMLElement;
     titleInput.focus();
-  }
-
-  sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   disableInput(element: HTMLElement) {
@@ -61,6 +60,11 @@ export class ToDoListComponent implements OnInit {
 
   removeList(id: number) {
     this.toDoList = this.toDoList.filter(list => list.id !== id);
+    this.toDoListChange.emit(this.toDoList);
+  }
+
+  private sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }
