@@ -17,7 +17,6 @@ export class ToDoComponent implements OnInit {
 
   updateToDoList(list: ToDoListType[]) {
     this.toDoList = list;
-    console.log('list:', this.toDoList);
   }
 
 }

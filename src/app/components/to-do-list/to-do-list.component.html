@@ -7,45 +7,49 @@
       >+</div>
   </div>
   <div class="to-do-list__container">
-    <div
-      class="to-do-list__card"
-      *ngFor="let list of toDoList"
-    >
-      <input
-        class="to-do-list__card__title"
-        type="text"
-        [(ngModel)]="list.title"
-        [placeholder]="list.placeholder"
-        (blur)="disableInput($event.target)"
-        (keypress)="endEdit($event)"
-      />
-
+    <div *ngFor="let list of toDoList">
       <div
-        *ngIf="list.title.length"
-        class="to-do-list__card__title to-do-list__card__title--done"
-        (dblclick)="enableInput($event.target)"
-        hidden
+        class="to-do-list__card"
+        (click)="selectList(list)"
       >
-        {{ list.title }}
+        <input
+          class="to-do-list__card__title"
+          type="text"
+          [(ngModel)]="list.title"
+          [placeholder]="list.placeholder"
+          (blur)="disableInput($event.target)"
+          (keypress)="endEdit($event)"
+        />
+
+        <div
+          *ngIf="list.title.length"
+          class="to-do-list__card__title to-do-list__card__title--done"
+          (dblclick)="enableInput($event.target)"
+          hidden
+        >
+          {{ list.title }}
+        </div>
+
+        <div
+          *ngIf="!list.title.length"
+          class="to-do-list__card__title to-do-list__card__title--done"
+          (dblclick)="enableInput($event.target)"
+          hidden
+        >
+          {{ list.placeholder }}
+        </div>
+
+        <div class="to-do-list__card__counter">
+          {{ list.todos.length ? list.todos : '' }}
+        </div>
+
+        <div
+        class="to-do-list__btn"
+        (click)="removeList(list.id)"
+        >-</div>
       </div>
 
-      <div
-        *ngIf="!list.title.length"
-        class="to-do-list__card__title to-do-list__card__title--done"
-        (dblclick)="enableInput($event.target)"
-        hidden
-      >
-        {{ list.placeholder }}
-      </div>
-
-      <div class="to-do-list__card__counter">
-        {{ list.todos.length ? list.todos : '' }}
-      </div>
-
-      <div
-      class="to-do-list__btn"
-      (click)="removeList(list.id)"
-      >-</div>
+      <div *ngIf="list.selected" class="to-do-list__selection"></div>
     </div>
   </div>
 </div>

@@ -1,4 +1,8 @@
 .to-do-details {
   float: right;
-  width: 60%;
+  width: calc(55% - 23px);
+  height: 100%;
+  overflow: auto;
+  border-left: 3px solid #426a8c;
+  padding-left: 20px;
 }

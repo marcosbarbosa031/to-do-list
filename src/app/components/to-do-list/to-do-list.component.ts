@@ -22,11 +22,18 @@ export class ToDoListComponent implements OnInit {
       id,
       title: '',
       placeholder: 'Nova lista...',
+      selected: false,
       todos: []
     };
 
     this.toDoList.push(list);
     this.toDoListChange.emit(this.toDoList);
+
+    this.toDoList.forEach(l => {
+      if (id === 1) {
+        l.selected = true;
+      }
+    });
 
     await this.sleep(100);
     const titleInput = element.parentElement.parentElement.children[1].children[id - 1].children[0] as HTMLElement;
@@ -59,8 +66,23 @@ export class ToDoListComponent implements OnInit {
   }
 
   removeList(id: number) {
+    this.toDoList.forEach(l => {
+      if (this.toDoList.length && l.id === id) {
+        this.toDoList[0].selected = true;
+      }
+    });
     this.toDoList = this.toDoList.filter(list => list.id !== id);
     this.toDoListChange.emit(this.toDoList);
+  }
+
+  selectList(list: ToDoListType) {
+    this.toDoList.forEach(l => {
+      if (l.id !== list.id) {
+        l.selected = false;
+      }
+    });
+
+    list.selected = true;
   }
 
   private sleep(ms: number) {
