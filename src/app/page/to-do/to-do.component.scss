@@ -9,8 +9,10 @@
 .to-do-page-content {
   width: 80%;
   max-width: 1200px;
-  height: auto;
+  height: 90%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
 
   &__title {
     font-size: 42px;
@@ -25,7 +27,7 @@
   }
 
   &__card {
-    height: 600px;
+    height: 100%;
     padding: 20px;
     background-color: #cde8ff;
     border-top: 2px solid #426a8c;

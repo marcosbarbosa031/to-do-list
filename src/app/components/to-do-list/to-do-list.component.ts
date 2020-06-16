@@ -24,12 +24,9 @@ export class ToDoListComponent implements OnInit {
       todos: []
     };
 
-    console.log(list);
-
     this.toDoList.push(list);
     await this.sleep(100);
     const titleInput = element.parentElement.parentElement.children[1].children[id - 1].children[0] as HTMLElement;
-    console.log(titleInput);
     titleInput.focus();
   }
 
