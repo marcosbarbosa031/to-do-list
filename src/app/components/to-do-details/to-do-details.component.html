@@ -29,6 +29,7 @@
         <div
           class="to-do-details__card__btn to-do-details__card__btn--right"
           [ngClass]="{'to-do-details__card__btn--done': task.status === 'done'}"
+          (click)="deleteTask(task.id)"
         >-</div>
       </div>
     </div>

@@ -1,0 +1,51 @@
+<div class="github">
+  <div class="github-header">
+    <div class="github-header__search">
+      <form
+        [formGroup]="searchForm"
+        (ngSubmit)="submit()"
+      >
+        <input
+          type="text"
+          class="github-header__input"
+          formControlName="username"
+          placeholder="Pesquise pelo usuário"
+        >
+
+        <button
+          class="github-header__btn"
+          type="submit"
+          [disabled]="disabled"
+        >Pesquisar</button>
+      </form>
+    </div>
+  </div>
+  <div class="github-body">
+    <div
+      class="github-body__card"
+      *ngFor="let repo of repos | async"
+    >
+      <div class="github-body__column github-body__column--left">
+        <div class="github-body__card__name">
+          <a [href]="repo.html_url" target="__blank">{{ repo.name }}</a>
+          <!-- <span *ngIf="repo.private">Private</span> -->
+        </div>
+      </div>
+
+      <div class="github-body__column github-body__column--right">
+        <div class="github-body__details">
+          <img src="assets/icons/star.svg" class="github-body__icon">
+          <div class="github-body__count">{{repo.stargazers_count}}</div>
+        </div>
+        <div class="github-body__details">
+          <img src="assets/icons/watch.svg" class="github-body__icon">
+          <div class="github-body__count">{{repo.watchers_count}}</div>
+        </div>
+        <div class="github-body__details">
+          <img src="assets/icons/fork.png" class="github-body__icon">
+          <div class="github-body__count">{{repo.forks_count}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

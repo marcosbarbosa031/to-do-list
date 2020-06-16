@@ -16,8 +16,9 @@ export class ToDoDetailsComponent implements OnInit {
   }
 
   addTask(event: any) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && event.target.value.length) {
       const task: ToDoDetailsType = {
+        id: this.toDo.tasks.length,
         title: event.target.value,
         description: '',
         status: 'not done'
@@ -31,6 +32,10 @@ export class ToDoDetailsComponent implements OnInit {
   taskDone(task: ToDoDetailsType) {
     task.status = 'done';
     console.log(this.toDo);
+  }
+
+  deleteTask(id: number) {
+    this.toDo.tasks = this.toDo.tasks.filter(task => task.id !== id);
   }
 
 }

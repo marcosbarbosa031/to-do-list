@@ -42,15 +42,15 @@ export class ToDoListComponent implements OnInit {
     titleInput.focus();
   }
 
-  disableInput(element: HTMLElement, id: number) {
+  disableInput(element: any, id: number) {
     const hiddenTitle = element.parentElement.children[1];
     this.toDoList.forEach(list => {
-      if (list.id === id && !list.title.length) {
-        list.title = list.placeholder;
-      } else {
+      if (element.value.length) {
         hiddenTitle.removeAttribute('hidden');
         element.setAttribute('disabled', 'true');
         element.setAttribute('hidden', 'true');
+      } else {
+        element.focus();
       }
     });
   }
