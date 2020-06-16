@@ -24,7 +24,7 @@ export class ToDoListComponent implements OnInit {
       title: '',
       placeholder: 'New List...',
       selected: false,
-      todos: []
+      tasks: []
     };
 
     this.toDoList.push(list);
@@ -74,11 +74,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   removeList(id: number) {
-    // this.toDoList.forEach(l => {
-    //   if (this.toDoList.length && l.id === id) {
-    //     this.toDoList[0].selected = true;
-    //   }
-    // });
     this.toDoList = this.toDoList.filter(list => list.id !== id);
     this.toDoListChange.emit(this.toDoList);
   }

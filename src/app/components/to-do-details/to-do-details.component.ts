@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ToDoListType } from '../to-do-list/to-do-list.types';
 import { ToDoDetailsType } from '.';
 
@@ -9,7 +9,6 @@ import { ToDoDetailsType } from '.';
 })
 export class ToDoDetailsComponent implements OnInit {
   @Input() toDo: ToDoListType;
-  tasks: ToDoDetailsType[] = [];
 
   constructor() { }
 
@@ -25,7 +24,7 @@ export class ToDoDetailsComponent implements OnInit {
       };
 
       event.target.value = '';
-      this.tasks.push(task);
+      this.toDo.tasks.push(task);
     }
   }
 

@@ -5,5 +5,5 @@ export interface ToDoListType {
   title: string;
   placeholder: string;
   selected: boolean;
-  todos: ToDoDetailsType[];
+  tasks: ToDoDetailsType[];
 }

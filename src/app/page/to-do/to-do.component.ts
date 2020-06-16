@@ -22,7 +22,6 @@ export class ToDoComponent implements OnInit {
 
   updateToDo(toDo: ToDoListType) {
     this.toDo = toDo;
-    console.log(this.toDo);
   }
 
 }
