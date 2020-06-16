@@ -28,4 +28,9 @@ export class ToDoDetailsComponent implements OnInit {
     }
   }
 
+  taskDone(task: ToDoDetailsType) {
+    task.status = 'done';
+    console.log(this.toDo);
+  }
+
 }

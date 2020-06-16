@@ -25,6 +25,100 @@
     overflow: auto;
   }
 
+  &__card {
+    height: 42px;
+    width: calc(100% - 24px);
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #426a8c;
+    display: flex;
+    box-shadow: 1px 1px 0px 1px #426a8c;
+    user-select: none;
+
+    &--done {
+      color: #cde8ff;
+      background-color: #426a8c;
+      border: 1px solid #cde8ff;
+      box-shadow: 1px 1px 0px 1px #cde8ff;
+    }
+
+    &__title {
+      margin: auto 0;
+      font-size: 20px;
+      width: 85%;
+
+      &--done {
+        text-decoration: line-through;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      width: 15%;
+    }
+
+    &__btn {
+      float: right;
+      margin: auto;
+      width: 26px;
+      height: 26px;
+      font-size: 26px;
+      text-align: center;
+      background-color: #cde8ff;
+      border-top: 1px solid #426a8c;
+      border-left: 1px solid #426a8c;
+      box-shadow: 1px 1px 0px 1px #426a8c;
+      user-select: none;
+  
+      &:hover {
+        border-bottom: 1px solid #426a8c;
+        border-right: 1px solid #426a8c;
+        box-shadow: inset 0.5px 0.5px 0px 0.5px #426a8c;
+      }
+  
+      &:active {
+        color: #cde8ff;
+        background-color: #86b5de;
+        border-top: none;
+        border-left: none;
+        border-bottom: 1px solid #86b5de;
+        border-right: 1px solid #86b5de;
+        box-shadow: inset 0.5px 0.5px 0px 0.5px #86b5de;
+      }
+
+      &--left {
+        float: left;
+      }
+
+      &--right {
+        float: right;
+      }
+
+      &--done {
+        background-color: #426a8c;
+        border-top: 1px solid #cde8ff;
+        border-left: 1px solid #cde8ff;
+        box-shadow: 1px 1px 0px 1px #cde8ff;
+
+        &:hover {
+          border-bottom: 1px solid #cde8ff;
+          border-right: 1px solid #cde8ff;
+          box-shadow: inset 0.5px 0.5px 0px 0.5px #426a8c;
+        }
+    
+        &:active {
+          color: #426a8c;
+          background-color: #86b5de;
+          border-top: none;
+          border-left: none;
+          border-bottom: 1px solid #86b5de;
+          border-right: 1px solid #86b5de;
+          box-shadow: inset 0.5px 0.5px 0px 0.5px #86b5de;
+        }
+      }
+    }
+  }
+
   &__footer {
     width: 100%;
     display: flex;

@@ -10,9 +10,27 @@
   <div class="to-do-details__body">
     <div
       class="to-do-details__card"
+      [ngClass]="{'to-do-details__card--done': task.status === 'done'}"
       *ngFor="let task of toDo.tasks"
     >
-      {{ task.title }}
+      <div
+        class="to-do-details__card__title"
+        [ngClass]="{'to-do-details__card__title--done': task.status === 'done'}"
+      >
+        {{ task.title }}
+      </div>
+
+      <div class="to-do-details__card__actions">
+        <div
+          class="to-do-details__card__btn to-do-details__card__btn--left"
+          *ngIf="task.status !== 'done'"
+          (click)="taskDone(task)"
+        >✓</div>
+        <div
+          class="to-do-details__card__btn to-do-details__card__btn--right"
+          [ngClass]="{'to-do-details__card__btn--done': task.status === 'done'}"
+        >-</div>
+      </div>
     </div>
   </div>
   <div class="to-do-details__footer">
