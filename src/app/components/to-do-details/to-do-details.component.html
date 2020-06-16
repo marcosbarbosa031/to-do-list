@@ -1,7 +1,26 @@
 <div
   class="to-do-details"
-  *ngIf="toDoList.length"
+  *ngIf="toDo"
 >
-  to-do-details works!
-  {{toDoList.length}}
+  <div class="to-do-details__header">
+    <div class="to-do-details__title">
+      {{ toDo.title }}
+    </div>
+  </div>
+  <div class="to-do-details__body">
+    <div
+      class="to-do-details__card"
+      *ngFor="let task of tasks"
+    >
+      {{ task.title }}
+    </div>
+  </div>
+  <div class="to-do-details__footer">
+    <input
+      class="to-do-details__search"
+      type="text"
+      placeholder="Add Task..."
+      (keypress)="addTask($event)"
+    />
+  </div>
 </div>

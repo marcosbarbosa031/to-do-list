@@ -10,6 +10,7 @@ export class ToDoListComponent implements OnInit {
   title = 'Lists';
   @Input() toDoList: ToDoListType[];
   @Output() toDoListChange = new EventEmitter<ToDoListType[]>();
+  @Output() selectToDo = new EventEmitter<ToDoListType>();
 
   constructor() { }
 
@@ -21,7 +22,7 @@ export class ToDoListComponent implements OnInit {
     const list: ToDoListType = {
       id,
       title: '',
-      placeholder: 'Nova lista...',
+      placeholder: 'New List...',
       selected: false,
       todos: []
     };
@@ -32,19 +33,26 @@ export class ToDoListComponent implements OnInit {
     this.toDoList.forEach(l => {
       if (id === 1) {
         l.selected = true;
+        this.selectToDo.emit(list);
       }
     });
 
     await this.sleep(100);
-    const titleInput = element.parentElement.parentElement.children[1].children[id - 1].children[0] as HTMLElement;
+    const titleInput = element.parentElement.parentElement.children[1].children[id - 1].children[0].children[0] as HTMLElement;
     titleInput.focus();
   }
 
-  disableInput(element: HTMLElement) {
+  disableInput(element: HTMLElement, id: number) {
     const hiddenTitle = element.parentElement.children[1];
-    element.setAttribute('disabled', 'true');
-    element.setAttribute('hidden', 'true');
-    hiddenTitle.removeAttribute('hidden');
+    this.toDoList.forEach(list => {
+      if (list.id === id && !list.title.length) {
+        list.title = list.placeholder;
+      } else {
+        hiddenTitle.removeAttribute('hidden');
+        element.setAttribute('disabled', 'true');
+        element.setAttribute('hidden', 'true');
+      }
+    });
   }
 
   enableInput(element: HTMLElement) {
@@ -55,9 +63,9 @@ export class ToDoListComponent implements OnInit {
     inputElement.focus();
   }
 
-  endEdit(event) {
+  endEdit(event: KeyboardEvent) {
     if (event.key === 'Enter') {
-      const element = event.target;
+      const element = event.target as Element;
       const hiddenTitle = element.parentElement.children[1];
       element.setAttribute('disabled', 'true');
       element.setAttribute('hidden', 'true');
@@ -66,11 +74,11 @@ export class ToDoListComponent implements OnInit {
   }
 
   removeList(id: number) {
-    this.toDoList.forEach(l => {
-      if (this.toDoList.length && l.id === id) {
-        this.toDoList[0].selected = true;
-      }
-    });
+    // this.toDoList.forEach(l => {
+    //   if (this.toDoList.length && l.id === id) {
+    //     this.toDoList[0].selected = true;
+    //   }
+    // });
     this.toDoList = this.toDoList.filter(list => list.id !== id);
     this.toDoListChange.emit(this.toDoList);
   }
@@ -81,8 +89,8 @@ export class ToDoListComponent implements OnInit {
         l.selected = false;
       }
     });
-
     list.selected = true;
+    this.selectToDo.emit(list);
   }
 
   private sleep(ms: number) {

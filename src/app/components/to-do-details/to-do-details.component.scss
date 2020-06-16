@@ -2,7 +2,49 @@
   float: right;
   width: calc(55% - 23px);
   height: 100%;
-  overflow: auto;
   border-left: 3px solid #426a8c;
   padding-left: 20px;
+
+  &__header {
+    width: 100%;
+    display: flex;
+  }
+
+  &__title {
+    height: 26px;
+    font-size: 26px;
+    font-weight: 600;
+    padding: 12px 0px;
+    text-align: center;
+    user-select: none;
+  }
+
+  &__body {
+    height: calc(100% - 102px);
+    margin-bottom: 20px;
+    overflow: auto;
+  }
+
+  &__footer {
+    width: 100%;
+    display: flex;
+  }
+
+  &__search {
+    width: 100%;
+    padding-left: 10px;
+    height: 30px;
+    float: left;
+    margin: auto 0;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #cde8ff;
+    font-family: 'Fira Code';
+    background-color: #426a8c;
+
+    &::placeholder {
+      color: #cde8ff;
+    }
+  }
 }

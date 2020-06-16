@@ -17,7 +17,7 @@
           type="text"
           [(ngModel)]="list.title"
           [placeholder]="list.placeholder"
-          (blur)="disableInput($event.target)"
+          (blur)="disableInput($event.target, list.id)"
           (keypress)="endEdit($event)"
         />
 
