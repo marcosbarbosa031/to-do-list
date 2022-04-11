@@ -31,9 +31,11 @@ export class ToDoListComponent implements OnInit {
     this.toDoListChange.emit(this.toDoList);
 
     this.toDoList.forEach(l => {
-      if (id === 1) {
+      if (id === l.id) {
         l.selected = true;
         this.selectToDo.emit(list);
+      } else {
+        l.selected = false;
       }
     });
 
